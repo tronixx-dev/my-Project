@@ -1,7 +1,7 @@
 
 const express = require('express')
 const mongoose = require('mongoose')
-const { getHome, getContact, postContact } = require('./controller/userController')
+const { getHome, getContact, postContact } = require('./controller/contactController')
 const app = express()
 require('dotenv').config()
 const userRoute = require('./routes/useRoutes')
