@@ -1,4 +1,5 @@
 const contactModel = require('../models/contactShema')
+const userModel = require('../models/userSchema')
 const {contactValidator} = require('../validator/contactValidator')
 
 
@@ -40,5 +41,7 @@ const postContact = async (req, res) => {
         return res.status(500).json({error: "Internal server error!!"});
     }
 };
+
+
 
 module.exports = { getContact, postContact, getHome}

@@ -3,6 +3,7 @@ const { userValidator } = require('../validator/userValidator')
 const userModel = require('../models/userSchema');
 const { findOne } = require('../models/contactShema');
 const bcrypt = require('bcryptjs')
+const { generateToken } = require('../middleware/generateToken')
 
 const postUser = async (req, res) => {
     try {
@@ -29,6 +30,7 @@ const postUser = async (req, res) => {
         return res.status(201).json({
             message: 'User created successfully',
             user,
+            token: generateToken((await user)._id)
         });
     } catch (err) {
         console.error(err)
@@ -52,7 +54,8 @@ const login = async (req, res) => {
 
                 return res.status(200).json({
                     message: 'User logged in',
-                    existingUser
+                    existingUser,
+                    token: generateToken(existingUser._id)
                 });
 
 
@@ -61,4 +64,22 @@ const login = async (req, res) => {
         console.error(error)
     }
 }
-module.exports = {postUser, login}
+
+const getALL = async(req, res) => {
+    try {
+        const users = await userModel.find()
+
+        if(!users) return res.status(404).json({
+            message: 'No users found'
+        })
+
+        res.status(200).json(users)
+    } catch (error) {
+        console.error(error)
+        res.status(500).json({
+            reason: error.message
+        })
+
+    }
+}
+module.exports = {postUser, login, getALL};

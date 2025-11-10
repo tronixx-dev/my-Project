@@ -4,7 +4,7 @@ const mongoose = require('mongoose')
 const { getHome, getContact, postContact } = require('./controller/contactController')
 const app = express()
 require('dotenv').config()
-const userRoute = require('./routes/useRoutes')
+const userRoute = require('./routes/userRoutes')
 
 mongoose.connect(process.env.MONGODB_URI,{
     serverSelectionTimeoutMS: 30000
