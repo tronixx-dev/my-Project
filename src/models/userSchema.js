@@ -20,8 +20,14 @@ const userSchema = new mongoose.Schema({
         required: true,
         minLength: 6,
         maxLength: 15
+    },
+    profile: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Profile",
+        unique: true
     }
-});
+
+}, {timestamps: true});
 
 userSchema.pre('save', async function(next) {
     if(!this.isModified('password'))
@@ -34,4 +40,4 @@ userSchema.pre('save', async function(next) {
 
 const userModel = mongoose.model('Users', userSchema);
 
-module.exports = userModel; 
+module.exports = {userModel} 
