@@ -30,11 +30,11 @@ if(process.env.NODE_ENV !== 'production') {
 }
 
 
-app.get('/', getHome) 
-app.get('/', getLogin)
-app.get('/', getSignup)
-app.get('/contact', getContact)
-app.post('/post-contact', postContact)
+app.get('/', (req, res) => {
+    res.send('API is running...')
+})
+
+
 
 // app.listen(3000, () => {
 //     console.log('server running on port 3000')
