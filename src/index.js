@@ -6,6 +6,7 @@ const { getHome, getContact, postContact } = require('./controller/contactContro
 const app = express()
 require('dotenv').config()
 const userRoute = require('./routes/userRoutes')
+const { login } = require('./controller/userController')
 
 mongoose.connect(process.env.MONGODB_URI,{
     serverSelectionTimeoutMS: 30000
@@ -30,6 +31,7 @@ if(process.env.NODE_ENV !== 'production') {
 
 
 app.get('/', getHome) 
+app.get('/', login)
 app.get('/contact', getContact)
 app.post('/post-contact', postContact)
 
