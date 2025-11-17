@@ -10,7 +10,7 @@ const { generateToken } = require('../middleware/generateToken')
 const postUser = async (req, res) => {
   try {
     const { username, email, password, bio } = req.body;
-    const profilePicture = req.file ? req.file.filename : null;
+    // const profilePicture = req.file ? req.file.filename : null;
 
     // Validate request
     const { error } = userValidator.validate({ username, email, password, bio });
@@ -34,7 +34,7 @@ const postUser = async (req, res) => {
     //  create the profile linked to the user
     const profile = await profileModel.create({
       bio,
-      profilePicture,
+    //   profilePicture,
       user: user._id,
     });
 
