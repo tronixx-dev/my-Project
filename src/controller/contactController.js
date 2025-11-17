@@ -11,7 +11,7 @@ const getContact = (req, res) => {
     res.send('Contact me')
 }
 
-const login = (req, res) => {
+const getLogin = (req, res) => {
     res.send('Sign in')
 }
 
@@ -48,4 +48,4 @@ const postContact = async (req, res) => {
 
 
 
-module.exports = { getContact, postContact, getHome, login}
+module.exports = { getContact, postContact, getHome, getLogin}

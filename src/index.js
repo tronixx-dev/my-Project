@@ -2,7 +2,7 @@
 const express = require('express')
 const cors = require("cors")
 const mongoose = require('mongoose')
-const { getHome, getContact, postContact } = require('./controller/contactController')
+const { getHome, getContact, postContact, getLogin } = require('./controller/contactController')
 const app = express()
 require('dotenv').config()
 const userRoute = require('./routes/userRoutes')
@@ -31,7 +31,7 @@ if(process.env.NODE_ENV !== 'production') {
 
 
 app.get('/', getHome) 
-app.get('/', login)
+app.get('/', getLogin)
 app.get('/contact', getContact)
 app.post('/post-contact', postContact)
 
