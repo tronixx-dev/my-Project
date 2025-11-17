@@ -11,6 +11,10 @@ const getContact = (req, res) => {
     res.send('Contact me')
 }
 
+const login = (req, res) => {
+    res.send('Sign in')
+}
+
 const postContact = async (req, res) => {
     try {
         const {fullName, email, phoneNumber, message} = req.body;
@@ -44,4 +48,4 @@ const postContact = async (req, res) => {
 
 
 
-module.exports = { getContact, postContact, getHome}
+module.exports = { getContact, postContact, getHome, login}
