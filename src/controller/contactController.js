@@ -15,6 +15,10 @@ const getLogin = (req, res) => {
     res.send('Sign in')
 }
 
+const getSignup = (req, res) => {
+    res.send('Sign up with us today')
+}
+
 const postContact = async (req, res) => {
     try {
         const {fullName, email, phoneNumber, message} = req.body;
@@ -48,4 +52,4 @@ const postContact = async (req, res) => {
 
 
 
-module.exports = { getContact, postContact, getHome, getLogin}
+module.exports = { getContact, postContact, getHome, getLogin, getSignup}
