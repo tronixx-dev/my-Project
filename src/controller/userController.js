@@ -12,13 +12,13 @@ const postUser = async (req, res) => {
     const { username, email, password, bio } = req.body;
     // const profilePicture = req.file ? req.file.filename : null;
 
-    // Validate request
+    
     const { error } = userValidator.validate({ username, email, password, bio });
     if (error) {
       return res.status(400).json({ error: error.details[0].message });
     }
 
-    // Check if user already exists
+    
     const userExist = await userModel.findOne({ email });
     if (userExist) {
       return res.status(400).json({ message: "User already exists!!" });
@@ -31,7 +31,7 @@ const postUser = async (req, res) => {
       password,
     });
 
-    //  create the profile linked to the user
+    
     const profile = await profileModel.create({
       bio,
     //   profilePicture,
