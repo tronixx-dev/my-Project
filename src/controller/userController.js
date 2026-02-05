@@ -24,7 +24,7 @@ const postUser = async (req, res) => {
       return res.status(400).json({ message: "User already exists!!" });
     }
 
-    //  Create  user 
+    
     const user = await userModel.create({
       username,
       email,
@@ -38,10 +38,10 @@ const postUser = async (req, res) => {
       user: user._id,
     });
 
-    //  Link profile back to user
+    
     await userModel.findByIdAndUpdate(user._id, { profile: profile._id });
 
-    // Populate the profile field
+    
     const populatedUser = await userModel.findById(user._id).populate("profile");
 
     return res.status(201).json({
